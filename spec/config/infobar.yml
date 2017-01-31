@@ -1,0 +1,20 @@
+---
+development:
+  label: Progress
+  message:
+    format: ' %l %c/%t (%P%%) in %te with %r, ETA %e @%E %s '
+    '%s':
+      frames: :braille7
+      message: ✓
+    '%r':
+      format: '%.2f %U/s'
+      unit:   i
+      prefix: 1000
+  style:
+    done_fill:     ░
+    done_fg_color: 22
+    done_bg_color: 40
+    todo_fill:     ' '
+    todo_fg_color: 124
+    todo_bg_color: 214
+  show: <%= STDIN.tty? %>
