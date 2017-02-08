@@ -2,6 +2,8 @@
 
 - add color gradients?
 - cumulative counters to summarize several progress bars
+- categorize do progress and display accordingly
+- add trend arrow to rate
 - more documentation, lol
 
 ## DONE

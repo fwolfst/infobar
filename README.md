@@ -21,7 +21,11 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
+* 2017-02-08 Release 0.0.1
+  - Allow disabling of delegated output via infobar.show = false
+
 * 2017-02-08 Release 0.0.0
+  - Initial release
 
 ## Download
 

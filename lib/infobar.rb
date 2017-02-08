@@ -38,17 +38,17 @@ class Infobar
 
   attr_accessor :label
 
-  delegate :started?, to: :@counter
+  delegate :started?, to: :counter
 
-  delegate :done?, to: :@counter
+  delegate :done?, to: :counter
 
-  delegate :finished?, to: :@counter
+  delegate :finished?, to: :counter
 
-  delegate :show?, to: :@display
+  delegate :show?, to: :display
 
-  delegate :show=, to: :@display
+  delegate :show=, to: :display
 
-  delegate :style=, to: :@display
+  delegate :style=, to: :display
 
   def call(
     total:,
@@ -62,13 +62,13 @@ class Infobar
     finish:    nil
   )
     self.label = label
-    @counter.reset(total: total, current: current)
+    counter.reset(total: total, current: current)
     @message = convert_to_message(message)
     show.nil? or self.show = show
     if update
       update(message: @message)
     else
-      @display.reset
+      display.reset
     end
     frequency.nil? or display.frequency = frequency
     style.nil? or self.style = style
@@ -77,29 +77,29 @@ class Infobar
 
   def reset
     @message = convert_to_message('%l %c/%t in %te, ETA %e @%E %s')
-    @counter.reset(total: 0, current: 0)
-    @display.reset
+    counter.reset(total: 0, current: 0)
+    display.reset
     self
   end
 
   def update(message: nil)
     @message = convert_to_message(message)
-    @display.update(message: @message, progressed: @counter.progressed)
+    display.update(message: @message, progressed: counter.progressed)
     self
   end
 
   def progress(by: 1, message: nil, finish: true, force: false)
-    @counter.progress(by: by)
+    counter.progress(by: by)
     @message = convert_to_message(message)
-    @display.update(message: @message, force: force, progressed: @counter.progressed)
-    finish && @counter.done? and finish(message: finish)
+    display.update(message: @message, force: force, progressed: counter.progressed)
+    finish && counter.done? and finish(message: finish)
     self
   end
 
   def finish(message: nil)
-    @counter.finish
+    counter.finish
     @message = convert_to_message(message)
-    @display.update(message: @message, force: true, progressed: @counter.progressed)
+    display.update(message: @message, force: true, progressed: counter.progressed)
     self
   end
 
