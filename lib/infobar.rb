@@ -1,5 +1,6 @@
 require 'tins/xt'
 require 'complex_config'
+require 'more_math'
 
 class Infobar
 end

@@ -1,7 +1,7 @@
 require 'infobar/timer'
 
 class Infobar::Counter
-  class <<
+  class << self
     prepend Tins::Delegate
   end
 
@@ -22,6 +22,8 @@ class Infobar::Counter
   end
 
   delegate :rate, to: :@timer
+
+  delegate :fifo, to: :@timer, as: :fifo_rate
 
   delegate :average_time, to: :@timer
 

@@ -33,7 +33,7 @@ describe Infobar::Message do
   it 'can be interpolated' do
     Time.dummy(now) do
       expect(message.to_str).to eq(
-        "23 42 19 Test 0.55 0.452 54.76 45.24 00:00:02 00:00:21 00:00:19 11:11:30 1.0 00:01.000000 – %"
+        "23 42 19 Test 0.55 0.452 54.76 45.24 00:00:02 00:00:21 00:00:19 11:11:30 1.000→ 00:01.000000 – %"
       )
     end
   end
@@ -54,6 +54,14 @@ describe Infobar::Message do
       expect(message.to_str).to eq 'hello /'
       infobar.finish
       expect(message.to_str).to eq 'hello world at 2011-11-11 11:11:11'
+    end
+  end
+
+  it 'can display eta in native format' do
+    Time.dummy(now) do
+      message =
+        described_class.new(format: 'test %E', '%E' => { format: nil }).to_str
+      expect(message).to eq "test #{now + 19}"
     end
   end
 

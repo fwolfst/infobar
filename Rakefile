@@ -20,6 +20,7 @@ GemHadar do
   dependency 'tins',           '~> 1.0', '>= 1.13.2'
   dependency 'term-ansicolor', '~> 1.4'
   dependency 'complex_config', '~> 0.10'
+  dependency 'more_math'
   development_dependency 'rake'
   development_dependency 'simplecov'
   development_dependency 'rspec'

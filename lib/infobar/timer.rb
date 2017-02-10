@@ -1,12 +1,17 @@
+require 'infobar/fifo'
+
 class Infobar::Timer
   def initialize
     @n    = 0
     @x    = 0.0
+    @fifo = Infobar::FIFO.new(30)
   end
 
   attr_reader :x
 
   attr_reader :n
+
+  attr_reader :fifo
 
   def add(time, count)
     case @n
@@ -42,6 +47,7 @@ class Infobar::Timer
   def <<(x)
     @n +=1
     @x += (x - @x) / @n
+    @fifo << rate
     self
   end
 end

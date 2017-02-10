@@ -3,11 +3,11 @@
 - add color gradients?
 - cumulative counters to summarize several progress bars
 - categorize do progress and display accordingly
-- add trend arrow to rate
 - more documentation, lol
 
 ## DONE
 
+- add trend arrow to rate
 - units
 - configuration file?
 - add finished directive

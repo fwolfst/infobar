@@ -1,6 +1,7 @@
 require 'infobar/spinner'
 require 'infobar/duration'
 require 'infobar/number'
+require 'infobar/rate'
 
 class Infobar::Message
   class << self
@@ -88,12 +89,8 @@ class Infobar::Message
   end
 
   # rate with or without units
-  register('%r', unit: nil, prefix: 1000, format: '%f %U') do |directive, opts|
-    if opts[:unit]
-      Tins::Unit.format(Infobar.counter.rate, **opts)
-    else
-      Infobar.counter.rate
-    end
+  register('%r', unit: nil, prefix: 1000, format: '%.3f%U%t') do |directive, opts|
+    Infobar::Rate.new(Infobar.counter.rate, Infobar.counter.fifo_rate, **opts)
   end
 
   # average time as a duration

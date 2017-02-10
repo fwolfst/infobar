@@ -21,6 +21,9 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
+* 2017-02-10 Release 0.0.2
+  - Add trend arrow to rate directive
+
 * 2017-02-08 Release 0.0.1
   - Allow disabling of delegated output via infobar.show = false
 
