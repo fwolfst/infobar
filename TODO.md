@@ -4,6 +4,7 @@
 - cumulative counters to summarize several progress bars
 - categorize do progress and display accordingly
 - more documentation, lol
+- add a pause mode?
 
 ## DONE
 
