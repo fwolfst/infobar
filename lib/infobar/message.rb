@@ -111,7 +111,7 @@ class Infobar::Message
     end
   end
 
-  # literal percentag character
+  # literal percentage character
   register '%%' do
     ?%
   end
