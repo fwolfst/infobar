@@ -97,7 +97,6 @@ class Infobar::Display
 
   def reset
     clear
-    @frequency.reset
     self.style = self.class.default_style
     self
   end
@@ -106,6 +105,7 @@ class Infobar::Display
     carriage_return
     output << ' ' * columns
     carriage_return
+    @frequency.reset
     self
   end
 

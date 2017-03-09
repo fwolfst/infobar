@@ -32,6 +32,11 @@ describe Infobar::Display do
     display.reset
   end
 
+  it 'clear resets the frequency' do
+    expect(display.frequency).to receive(:reset).and_call_original
+    display.clear
+  end
+
   it 'has style' do
     test_style = {
       done_fill:     ?X,

@@ -21,6 +21,10 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
+* 2017-03-09 Release 0.0.3
+  - Reset frequency after calling clear. This means after calling output methods
+  the next update will be forced.
+
 * 2017-02-10 Release 0.0.2
   - Add trend arrow to rate directive
 
