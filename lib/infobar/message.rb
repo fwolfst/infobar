@@ -89,7 +89,7 @@ class Infobar::Message
   end
 
   # rate with or without units
-  register('%r', unit: nil, prefix: 1000, format: '%.3f%U%t') do |directive, opts|
+  register('%r', unit: 'i', prefix: 1000, format: '%.3f%U%t') do |directive, opts|
     Infobar::Rate.new(Infobar.counter.rate, Infobar.counter.fifo_rate, **opts)
   end
 
