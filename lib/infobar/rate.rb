@@ -3,12 +3,13 @@ require 'infobar/trend'
 class Infobar::Rate
   def initialize(value, fifo_values = [], **opts)
     opts[:format] = add_trend(opts[:format], fifo_values)
-    @string =
+    @string = value.full? do
       if opts[:format].include?('%U')
         Tins::Unit.format(value, **opts)
       else
         opts[:format] % value
       end
+    end.to_s
   end
 
   def to_s
