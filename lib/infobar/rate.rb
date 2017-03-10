@@ -5,10 +5,10 @@ class Infobar::Rate
     opts[:format] ||= '%.3f%U%t'
     opts[:format] = add_trend(opts[:format], fifo_values)
     @string = value.full? do
-      if format.include?('%U')
+      if opts[:format].include?('%U')
         Tins::Unit.format(value, **opts)
       else
-        format % value
+        opts[:format] % value
       end
     end.to_s
   end

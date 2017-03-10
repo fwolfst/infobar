@@ -22,6 +22,9 @@ Display progress of computations and additional information to the terminal.
 ## Changes
 
 * 2017-03-10 Release 0.0.4
+  - Always provide a default unit for rate display, 'i/s' for "items per second".
+
+* 2017-03-10 Release 0.0.4
   - Fix problem b/c at the beginning there might not be a valid rate.
 
 * 2017-03-09 Release 0.0.3

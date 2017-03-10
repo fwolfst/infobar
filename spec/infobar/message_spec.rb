@@ -33,7 +33,7 @@ describe Infobar::Message do
   it 'can be interpolated' do
     Time.dummy(now) do
       expect(message.to_str).to eq(
-        "23 42 19 Test 0.55 0.452 54.76 45.24 00:00:02 00:00:21 00:00:19 11:11:30 1.000→ 00:01.000000 – %"
+        "23 42 19 Test 0.55 0.452 54.76 45.24 00:00:02 00:00:21 00:00:19 11:11:30 1.000i/s→ 00:01.000000 – %"
       )
     end
   end
