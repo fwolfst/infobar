@@ -12,6 +12,12 @@ describe Infobar do
     expect(infobar.counter.total).to eq 10
   end
 
+  it 'can be used to signal being busy with a block' do
+    expect { Infobar.busy }.to raise_error ArgumentError
+    expect(infobar.display).to receive(:update).at_least(1).and_call_original
+    Infobar.busy { sleep 0.2 }
+  end
+
   it 'can be called and update instantly' do
     expect(infobar).to receive(:update).and_call_original
     Infobar(total: 10, update: true)

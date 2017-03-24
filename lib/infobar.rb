@@ -76,6 +76,26 @@ class Infobar
     self
   end
 
+  def busy(**opts)
+    block_given? or raise ArgumentError, 'block is required as an argument'
+    duration = opts.delete(:sleep) || 0.1
+    call({
+      total: Float::INFINITY,
+      message: { format: ' %l %te %s ', '%s' => { frames: :circle1 } },
+    } | opts)
+    ib = Thread.new {
+      loop do
+        +infobar
+        sleep duration
+      end
+    }
+    r = nil
+    t = Thread.new { r = yield }
+    t.join
+    ib.kill
+    r
+  end
+
   def reset
     @message = convert_to_message('%l %c/%t in %te, ETA %e @%E %s')
     counter.reset(total: 0, current: 0)

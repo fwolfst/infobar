@@ -21,7 +21,10 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
-* 2017-03-10 Release 0.0.4
+* 2017-03-24 Release 0.0.6
+  - Add busybar functionality via Infobar.busy { … } call
+
+* 2017-03-10 Release 0.0.5
   - Always provide a default unit for rate display, 'i/s' for "items per second".
 
 * 2017-03-10 Release 0.0.4
