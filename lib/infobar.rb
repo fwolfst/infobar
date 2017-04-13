@@ -67,7 +67,7 @@ class Infobar
     @message = convert_to_message(message)
     show.nil? or self.show = show
     if update
-      update(message: @message)
+      update(message: @message, force: true)
     else
       display.reset
     end
@@ -103,9 +103,9 @@ class Infobar
     self
   end
 
-  def update(message: nil)
+  def update(message: nil, force: true)
     @message = convert_to_message(message)
-    display.update(message: @message, progressed: counter.progressed)
+    display.update(message: @message, progressed: counter.progressed, force: force)
     self
   end
 

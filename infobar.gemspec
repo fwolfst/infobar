@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: infobar 0.0.6 ruby lib
+# stub: infobar 0.0.7 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "infobar".freeze
-  s.version = "0.0.6"
+  s.version = "0.0.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Florian Frank".freeze]
-  s.date = "2017-03-24"
+  s.date = "2017-04-13"
   s.description = "This gem displays progress of computations and additional information to the terminal.".freeze
   s.email = "flori@ping.de".freeze
   s.extra_rdoc_files = ["README.md".freeze, "lib/infobar.rb".freeze, "lib/infobar/counter.rb".freeze, "lib/infobar/display.rb".freeze, "lib/infobar/duration.rb".freeze, "lib/infobar/fancy_interface.rb".freeze, "lib/infobar/fifo.rb".freeze, "lib/infobar/frequency.rb".freeze, "lib/infobar/input_output.rb".freeze, "lib/infobar/message.rb".freeze, "lib/infobar/number.rb".freeze, "lib/infobar/rate.rb".freeze, "lib/infobar/spinner.rb".freeze, "lib/infobar/timer.rb".freeze, "lib/infobar/trend.rb".freeze, "lib/infobar/version.rb".freeze]

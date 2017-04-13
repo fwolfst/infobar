@@ -19,8 +19,20 @@ describe Infobar do
   end
 
   it 'can be called and update instantly' do
-    expect(infobar).to receive(:update).and_call_original
+    expect(infobar).to receive(:update).with(message: anything, force: true).
+      and_call_original
     Infobar(total: 10, update: true)
+  end
+
+  it 'can be update display with force' do
+    Infobar(total: 10)
+    expect(infobar.display).to receive(:update).
+      with(
+        message: anything,
+        progressed: anything,
+        force: true
+      ).and_call_original
+    infobar.update
   end
 
   it 'can be called via toplevel method' do
