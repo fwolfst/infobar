@@ -124,9 +124,13 @@ class Infobar::Message
 
   attr_reader :opts
 
-  delegate :directives, to: self
+  def directives
+    self.class.directives
+  end
 
-  delegate :directive_default_options, to: self
+  def directive_default_options
+    self.class.directive_default_options
+  end
 
   def opts_for(directive)
     @opts.fetch(directive, directive_default_options[directive])

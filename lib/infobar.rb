@@ -51,6 +51,8 @@ class Infobar
 
   delegate :style=, to: :display
 
+  delegate :as_styles=, to: :display
+
   def call(
     total:,
     current:   0,
@@ -60,19 +62,18 @@ class Infobar
     style:     cc.infobar?&.style?&.to_h,
     frequency: cc.infobar?&.frequency?,
     update:    false,
-    finish:    nil
+    finish:    nil,
+    as_styles: nil
   )
     self.label = label
     counter.reset(total: total, current: current)
+    display.reset
     @message = convert_to_message(message)
     show.nil? or self.show = show
-    if update
-      update(message: @message, force: true)
-    else
-      display.reset
-    end
     frequency.nil? or display.frequency = frequency
     style.nil? or self.style = style
+    self.as_styles = as_styles
+    update and update(message: @message, force: true)
     self
   end
 
@@ -105,14 +106,14 @@ class Infobar
 
   def update(message: nil, force: true)
     @message = convert_to_message(message)
-    display.update(message: @message, progressed: counter.progressed, force: force)
+    display.update(message: @message, counter: counter, force: force)
     self
   end
 
-  def progress(by: 1, message: nil, finish: true, force: false)
-    counter.progress(by: by)
+  def progress(by: 1, as: nil, message: nil, finish: true, force: false)
+    counter.progress(by: by, as: as)
     @message = convert_to_message(message)
-    display.update(message: @message, force: force, progressed: counter.progressed)
+    display.update(message: @message, force: force, counter: counter)
     finish && counter.done? and finish(message: finish)
     self
   end
@@ -120,7 +121,7 @@ class Infobar
   def finish(message: nil)
     counter.finish
     @message = convert_to_message(message)
-    display.update(message: @message, force: true, progressed: counter.progressed)
+    display.update(message: @message, force: true, counter: counter)
     self
   end
 

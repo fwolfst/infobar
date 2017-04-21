@@ -13,12 +13,16 @@ class Infobar::Counter
 
   attr_reader :total
 
+  attr_reader :as
+
   def reset(total: 0, current: 0)
     @current  = current
+    @as       = Hash.new(0).update(nil => current)
     @total    = total
     @start    = nil
     @finished = false
     @timer    = Infobar::Timer.new
+    self
   end
 
   delegate :rate, to: :@timer
@@ -40,12 +44,13 @@ class Infobar::Counter
     self
   end
 
-  def progress(by: 1)
+  def progress(by: 1, as: nil)
     if !finished? && by >= 1
       now = Time.now
       @start ||= now
       @timer.add(now, by)
       @current += by
+      @as[as] += 1
     end
     self
   end

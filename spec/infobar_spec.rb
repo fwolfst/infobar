@@ -29,7 +29,7 @@ describe Infobar do
     expect(infobar.display).to receive(:update).
       with(
         message: anything,
-        progressed: anything,
+        counter: anything,
         force: true
       ).and_call_original
     infobar.update
@@ -70,6 +70,20 @@ describe Infobar do
     expect(infobar.counter.current).to eq 5
     expect(infobar += 2).to eq infobar # only for variables
     expect(infobar.counter.current).to eq 7
+  end
+
+  it 'can progress as some kind' do
+    Infobar(total: 10)
+    expect(infobar.counter.current).to eq 0
+    expect(infobar.progress).to eq infobar
+    expect(infobar.progress(as: :foo)).to eq infobar
+    expect(infobar.progress(as: :bar)).to eq infobar
+    expect(infobar.progress(as: :foo)).to eq infobar
+    expect(infobar.counter.as).to eq(
+      nil  => 1,
+      foo:    2,
+      bar:    1
+    )
   end
 
   it 'can be progressing with <<' do
@@ -123,7 +137,7 @@ describe Infobar do
     expect(infobar.display).to receive(:update).with(
       message: message,
       force: true,
-      progressed: 0.0
+      counter: anything
     ).and_call_original
     infobar.finish message: message
     expect(infobar).to be_finished
