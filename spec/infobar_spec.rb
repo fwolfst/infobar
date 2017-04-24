@@ -158,6 +158,7 @@ describe Infobar do
     Infobar(total: 10, style: { done_fill: ?X })
     output = ''
     infobar.display.output = output
+    allow(Tins::Terminal).to receive(:columns).and_return 80
     infobar.progress(force: true)
     expect(output).to include 'X'
   end
