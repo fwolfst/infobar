@@ -1,5 +1,5 @@
 ---
-development:
+default: &default
   label: Progress
   message:
     format: ' %l %c/%t (%P%%) in %te with %r, ETA %e @%E %s '
@@ -18,3 +18,6 @@ development:
     todo_fg_color: 124
     todo_bg_color: 214
   show: <%= STDIN.tty? %>
+
+development: *default
+test: *default

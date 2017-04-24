@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Infobar config' do
   before do
     ComplexConfig::Provider.config_dir =
-      Pathname.new(__FILE__).dirname.dirname + 'config'
+      Pathname.new(__FILE__).join('../../config')
     extend ComplexConfig::Provider::Shortcuts
     ComplexConfig::Provider.reload
   end
