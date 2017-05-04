@@ -24,7 +24,7 @@ class Infobar
   def initialize
     @counter = Infobar::Counter.new
     @display = Infobar::Display.new
-    reset
+    reset display: false
   end
 
   def self.display
@@ -97,10 +97,10 @@ class Infobar
     r
   end
 
-  def reset
+  def reset(display: true)
     @message = convert_to_message('%l %c/%t in %te, ETA %e @%E %s')
     counter.reset(total: 0, current: 0)
-    display.reset
+    display and self.display.reset
     self
   end
 
