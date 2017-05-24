@@ -124,8 +124,8 @@ class Infobar::Display
 
   delegate :called, to: :frequency, as: :updates
 
-  def reset
-    clear
+  def reset(clear: true)
+    clear && self.clear
     self.style = self.class.default_style
     self
   end

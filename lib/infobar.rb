@@ -53,6 +53,10 @@ class Infobar
 
   delegate :as_styles=, to: :display
 
+  delegate :input=, to: :display
+
+  delegate :output=, to: :display
+
   def call(
     total:,
     current:   0,
@@ -62,17 +66,20 @@ class Infobar
     style:     cc.infobar?&.style?&.to_h,
     frequency: cc.infobar?&.frequency?,
     update:    false,
-    finish:    nil,
-    as_styles: nil
+    as_styles: nil,
+    input:     $stdin,
+    output:    $stdout
   )
     self.label = label
     counter.reset(total: total, current: current)
-    display.reset
+    display.reset clear: false
     @message = convert_to_message(message)
     show.nil? or self.show = show
     frequency.nil? or display.frequency = frequency
     style.nil? or self.style = style
     self.as_styles = as_styles
+    self.input     = input
+    self.output    = output
     update and update(message: @message, force: true)
     self
   end

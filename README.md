@@ -21,6 +21,11 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
+* 2017-05-24 Release 0.2.0
+  - Allow setting of input/output on initial call.
+
+…
+
 * 2017-03-24 Release 0.0.6
   - Add busybar functionality via Infobar.busy { … } call
 
