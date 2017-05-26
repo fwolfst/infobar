@@ -25,18 +25,18 @@ class Infobar::Message
   end
 
   # current counter value of items
-  register '%c' do
-    Infobar.counter.current
+  register('%c', format: '%d', separate: ?_) do |directive, opts|
+    Infobar::Number.new(Infobar.counter.current, **opts)
   end
 
   # total counter value of items
-  register '%t' do
-    Infobar.counter.total
+  register('%t', format: '%d', separate: ?_) do |directive, opts|
+    Infobar::Number.new(Infobar.counter.total, **opts)
   end
 
   # number of items to go
-  register '%T' do
-    Infobar.counter.to_go
+  register('%T', format: '%d', separate: ?_) do |directive, opts|
+    Infobar::Number.new(Infobar.counter.to_go, **opts)
   end
 
   # label of progress bar
