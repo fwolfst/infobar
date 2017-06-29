@@ -65,17 +65,17 @@ class Infobar::Message
   end
 
   # time elapsed as a duration
-  register('%te', format: '%h:%m:%s') do |directive, opts|
+  register('%te', format: '%D') do |directive, opts|
     Infobar::Duration.new(Infobar.counter.time_elapsed, **opts)
   end
 
   # total time as a duration
-  register('%tt', format: '%h:%m:%s') do |directive, opts|
+  register('%tt', format: '%D') do |directive, opts|
     Infobar::Duration.new(Infobar.counter.total_time, **opts)
   end
 
   # ETA as a duration
-  register('%e', format: '%h:%m:%s') do |directive, opts|
+  register('%e', format: '%D') do |directive, opts|
     Infobar::Duration.new(Infobar.counter.time_remaining, **opts)
   end
 

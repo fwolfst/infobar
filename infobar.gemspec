@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: infobar 0.2.0 ruby lib
+# stub: infobar 0.3.0 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "infobar".freeze
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Florian Frank".freeze]
-  s.date = "2017-05-24"
+  s.date = "2017-06-29"
   s.description = "This gem displays progress of computations and additional information to the terminal.".freeze
   s.email = "flori@ping.de".freeze
   s.extra_rdoc_files = ["README.md".freeze, "lib/infobar.rb".freeze, "lib/infobar/counter.rb".freeze, "lib/infobar/display.rb".freeze, "lib/infobar/duration.rb".freeze, "lib/infobar/fancy_interface.rb".freeze, "lib/infobar/fifo.rb".freeze, "lib/infobar/frequency.rb".freeze, "lib/infobar/input_output.rb".freeze, "lib/infobar/message.rb".freeze, "lib/infobar/number.rb".freeze, "lib/infobar/rate.rb".freeze, "lib/infobar/spinner.rb".freeze, "lib/infobar/timer.rb".freeze, "lib/infobar/trend.rb".freeze, "lib/infobar/version.rb".freeze]
@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rake>.freeze, [">= 0"])
       s.add_development_dependency(%q<simplecov>.freeze, [">= 0"])
       s.add_development_dependency(%q<rspec>.freeze, [">= 0"])
-      s.add_runtime_dependency(%q<tins>.freeze, [">= 1.13.2", "~> 1.0"])
+      s.add_runtime_dependency(%q<tins>.freeze, [">= 1.15.0", "~> 1.0"])
       s.add_runtime_dependency(%q<term-ansicolor>.freeze, ["~> 1.4"])
       s.add_runtime_dependency(%q<complex_config>.freeze, ["~> 0.10"])
       s.add_runtime_dependency(%q<more_math>.freeze, [">= 0"])
@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rake>.freeze, [">= 0"])
       s.add_dependency(%q<simplecov>.freeze, [">= 0"])
       s.add_dependency(%q<rspec>.freeze, [">= 0"])
-      s.add_dependency(%q<tins>.freeze, [">= 1.13.2", "~> 1.0"])
+      s.add_dependency(%q<tins>.freeze, [">= 1.15.0", "~> 1.0"])
       s.add_dependency(%q<term-ansicolor>.freeze, ["~> 1.4"])
       s.add_dependency(%q<complex_config>.freeze, ["~> 0.10"])
       s.add_dependency(%q<more_math>.freeze, [">= 0"])
@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rake>.freeze, [">= 0"])
     s.add_dependency(%q<simplecov>.freeze, [">= 0"])
     s.add_dependency(%q<rspec>.freeze, [">= 0"])
-    s.add_dependency(%q<tins>.freeze, [">= 1.13.2", "~> 1.0"])
+    s.add_dependency(%q<tins>.freeze, [">= 1.15.0", "~> 1.0"])
     s.add_dependency(%q<term-ansicolor>.freeze, ["~> 1.4"])
     s.add_dependency(%q<complex_config>.freeze, ["~> 0.10"])
     s.add_dependency(%q<more_math>.freeze, [">= 0"])
