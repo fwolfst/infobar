@@ -21,6 +21,12 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
+* 2017-12-08 Release 0.4.0
+  - Automatically iterate when `with_infobar` is passed a block.
+
+* 2017-06-29 Release 0.3.0
+  - Nicely format large numbers the Ruby way
+
 * 2017-05-24 Release 0.2.0
   - Allow setting of input/output on initial call.
 

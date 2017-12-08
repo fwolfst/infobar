@@ -178,4 +178,12 @@ describe Infobar do
     '🇩🇪'.with_infobar(total: :bytesize)
     expect(infobar.counter.total).to eq 8
   end
+
+  it 'can interpret size on an object' do
+    sum = 0
+    [ 1, 2, 3 ].with_infobar do |x|
+      sum += x
+    end
+    expect(sum).to eq 6
+  end
 end

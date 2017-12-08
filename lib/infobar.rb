@@ -155,7 +155,7 @@ class ::Object
     ::Infobar.instance
   end
 
-  def with_infobar(**opts)
+  def with_infobar(**opts, &block)
     case
     when total = opts[:total].ask_and_send(:to_sym)
       opts[:total] = __send__(total)
@@ -163,6 +163,7 @@ class ::Object
       opts[:total] = size
     end
     Infobar.(**opts)
+    block and each(&block)
     self
   end
 end
