@@ -21,6 +21,9 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
+* 2018-03-05 Release 0.5.0
+  - Allow counter values to be formatted with units.
+
 * 2017-12-08 Release 0.4.0
   - Automatically iterate when `with_infobar` is passed a block.
 
