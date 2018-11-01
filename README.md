@@ -13,13 +13,16 @@ Display progress of computations and additional information to the terminal.
     > Infobar(total: 23)
     ░░░░░░░░░░ Infobar 6/23 in 00:00:05, ETA 00:00:17 @17:43:37 –
     > 23.times { +infobar; sleep 1 }
-    ░░░░░░░░░░░Infobar 23/23 in 00:00:22, ETA 00:00:00 @17:43:37 ✓░░░░░░░░░░ 
+    ░░░░░░░░░░░Infobar 23/23 in 00:00:22, ETA 00:00:00 @17:43:37 ✓░░░░░░░░░░
 
     or alternatively
 
     > (1..23).with_infobar.each { |i| +infobar; sleep 1 }
 
 ## Changes
+
+* 2018-11-01 Release 0.5.1
+  - Allow busy bar message to be overwritten.
 
 * 2018-03-05 Release 0.5.0
   - Allow counter values to be formatted with units.
