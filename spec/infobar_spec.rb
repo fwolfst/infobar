@@ -54,6 +54,15 @@ describe Infobar do
     expect(infobar.counter.current).to eq 1
   end
 
+  it 'can be progressing with unary - as false' do
+    Infobar(total: 10)
+    expect(infobar.counter.current).to eq 0
+    expect(infobar.counter.as[false]).to eq 0
+    expect(-infobar).to eq infobar
+    expect(infobar.counter.current).to eq 1
+    expect(infobar.counter.as[false]).to eq 1
+  end
+
   it 'can be progressing by n' do
     Infobar(total: 10)
     expect(infobar.counter.current).to eq 0
@@ -70,6 +79,21 @@ describe Infobar do
     expect(infobar.counter.current).to eq 5
     expect(infobar += 2).to eq infobar # only for variables
     expect(infobar.counter.current).to eq 7
+  end
+
+  it 'can be progressing by n with binary - as false' do
+    infobar = Infobar(total: 10)
+    expect(infobar.counter.current).to eq 0
+    expect(infobar.counter.as[false]).to eq 0
+    expect(infobar - 3).to eq infobar
+    expect(infobar.counter.current).to eq 3
+    expect(infobar.counter.as[false]).to eq 3
+    expect(2 - infobar).to eq infobar
+    expect(infobar.counter.current).to eq 5
+    expect(infobar.counter.as[false]).to eq 5
+    expect(infobar -= 2).to eq infobar # only for variables
+    expect(infobar.counter.current).to eq 7
+    expect(infobar.counter.as[false]).to eq 7
   end
 
   it 'can progress as some kind' do

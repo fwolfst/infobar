@@ -50,7 +50,7 @@ class Infobar::Counter
       @start ||= now
       @timer.add(now, by)
       @current += by
-      @as[as] += 1
+      @as[as] += by
     end
     self
   end

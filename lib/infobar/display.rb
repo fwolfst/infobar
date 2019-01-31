@@ -74,7 +74,7 @@ class Infobar::Display
   end
 
   def as_styles=(styles)
-    @as_styles = styles.to_h.dup
+    @as_styles = styles.to_h.symbolize_keys_recursive
     @as_styles.default_proc = proc { style.subhash(/\Adone_/) }
   end
 
@@ -98,9 +98,10 @@ class Infobar::Display
 
       total_done = 0
       counter.as.each_with_index do |(name, count), i|
-        done_fill     = as_styles[name].fetch(:done_fill) { @style[:done_fill] }
-        done_fg_color = as_styles[name].fetch(:done_fg_color) { @style[:done_fg_color] }
-        done_bg_color = as_styles[name].fetch(:done_bg_color) { @style[:done_bg_color] }
+        style_name = name.to_s.to_sym
+        done_fill     = as_styles[style_name].fetch(:done_fill) { @style[:done_fill] }
+        done_fg_color = as_styles[style_name].fetch(:done_fg_color) { @style[:done_fg_color] }
+        done_bg_color = as_styles[style_name].fetch(:done_bg_color) { @style[:done_bg_color] }
 
         as_progressed = count / counter.total.to_f
         as_done = as_progressed * cols

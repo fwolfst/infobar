@@ -4,11 +4,19 @@ module Infobar::FancyInterface
   end
 
   def +@
-    progress by: 1
+    progress by: 1, as: true
+  end
+
+  def -@
+    progress by: 1, as: false
   end
 
   def +(by)
-    progress by: by
+    progress by: by, as: true
+  end
+
+  def -(by)
+    progress by: by, as: false
   end
 
   def coerce(other)

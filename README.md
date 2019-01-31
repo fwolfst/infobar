@@ -21,6 +21,9 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
+* 2019-01-31 Release 0.6.0
+ - Allow progressing with - as false.
+
 * 2018-11-01 Release 0.5.1
   - Allow busy bar message to be overwritten.
 

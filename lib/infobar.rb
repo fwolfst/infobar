@@ -63,10 +63,10 @@ class Infobar
     label:     cc.infobar?&.label || 'Infobar',
     message:   cc.infobar?&.message?&.to_h,
     show:      cc.infobar?&.show?,
-    style:     cc.infobar?&.style?&.to_h,
+    style:     cc.infobar?&.style?&.to_h&.symbolize_keys_recursive,
+    as_styles: cc.infobar?&.as_styles?&.to_h&.symbolize_keys_recursive,
     frequency: cc.infobar?&.frequency?,
     update:    false,
-    as_styles: nil,
     input:     $stdin,
     output:    $stdout
   )
