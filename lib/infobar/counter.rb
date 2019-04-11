@@ -105,4 +105,10 @@ class Infobar::Counter
       @current / @total.to_f
     end
   end
+
+  def to_s
+    n = -> k { k.nil? ? 'default' : k.to_s }
+    width = -@as.keys.map(&n).max_by(&:size).to_i
+    @as.map { |key, value| "%#{width}s: %d" % [ n.(key), value ] }.join(?\n)
+  end
 end
