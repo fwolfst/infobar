@@ -21,6 +21,9 @@ Display progress of computations and additional information to the terminal.
 
 ## Changes
 
+* 2019-04-11 Release 0.6.1
+ - Counter string representation shows results now.
+
 * 2019-01-31 Release 0.6.0
  - Allow progressing with - as false.
 
