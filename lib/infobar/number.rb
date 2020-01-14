@@ -1,6 +1,5 @@
 class Infobar::Number
   def initialize(value, format: nil, unit: nil, prefix: 1000, separate: nil)
-    duration = Tins::Duration.new(value)
     case format
     when /%U/
       unit   ||= 'i/s'
