@@ -6,7 +6,7 @@ describe Infobar::Message do
   end
 
   let :message do
-    described_class.new(format: format, '%p' => { format: '%.2f' })
+    described_class.new({ format: format, '%p' => { format: '%.2f' } })
   end
 
   let :now do
@@ -60,7 +60,7 @@ describe Infobar::Message do
   it 'can display eta in native format' do
     Time.dummy(now) do
       message =
-        described_class.new(format: 'test %E', '%E' => { format: nil }).to_str
+        described_class.new({ format: 'test %E', '%E' => { format: nil } }).to_str
       expect(message).to eq "test #{now + 19}"
     end
   end

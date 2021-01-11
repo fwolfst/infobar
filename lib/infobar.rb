@@ -16,7 +16,7 @@ class Infobar
   class << self
     prepend Tins::Delegate
   end
-  include Tins::SexySingleton
+  include Singleton
   include Infobar::FancyInterface
   prepend Infobar::InputOutput
   include ComplexConfig::Provider::Shortcuts
@@ -28,7 +28,7 @@ class Infobar
   end
 
   def self.display
-    Infobar.instance.display
+    infobar.display
   end
 
   attr_reader :message
@@ -57,6 +57,10 @@ class Infobar
 
   delegate :output=, to: :display
 
+  def self.call(**opts)
+    instance.call(**opts)
+  end
+
   def call(
     total:,
     current:   0,
@@ -84,7 +88,11 @@ class Infobar
     self
   end
 
-  def busy(**opts)
+  def self.busy(**opts, &block)
+    instance.busy(**opts, &block)
+  end
+
+  def busy(**opts, &block)
     block_given? or raise ArgumentError, 'block is required as an argument'
     duration = opts.delete(:sleep) || 0.1
     call(**opts | {
@@ -132,6 +140,10 @@ class Infobar
     self
   end
 
+  def self.convert_to_message(message)
+    instance.convert_to_message(message)
+  end
+
   def convert_to_message(message)
     case message
     when Message
@@ -139,7 +151,7 @@ class Infobar
     when Hash
       Message.new(message)
     when String
-      Message.new format: message
+      Message.new({format: message})
     else
       @message
     end

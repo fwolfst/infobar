@@ -12,12 +12,12 @@ GemHadar do
   module_type :class
   test_dir    'spec'
   ignore      '.*.sw[pon]', 'pkg', 'Gemfile.lock', 'coverage', '.rvmrc',
-    '.AppleDouble', 'tags', '.byebug_history', '.DS_Store', 'errors.lst'
+    '.AppleDouble', 'tags', '.byebug_history', '.DS_Store', 'errors.lst', '.tool-versions'
   readme      'README.md'
   title       "#{name.camelize}"
 
   required_ruby_version '>= 2.3'
-  dependency 'tins',           '~> 1.0', '>= 1.15.0'
+  dependency 'tins',           '~> 1.0', '>= 1.28.0'
   dependency 'term-ansicolor', '~> 1.4'
   dependency 'complex_config', '~> 0.10'
   dependency 'more_math'

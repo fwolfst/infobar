@@ -65,7 +65,7 @@ class Infobar::Display
   attr_reader :style
 
   def style=(new_style)
-    @style.update(new_style)
+    @style.update(**new_style)
   end
 
   def as_styles
@@ -78,12 +78,12 @@ class Infobar::Display
     @as_styles.default_proc = proc { style.subhash(/\Adone_/) }
   end
 
-  def update(message:, counter:, force: false, **options)
+  def update(message: nil, counter: nil, force: false, **options)
     force and @frequency.reset
     @frequency.call do
-      message = Infobar.convert_to_message(message)
       carriage_return
       self.style = options
+      message = infobar.convert_to_message(message)
       layout_bar(message, counter)
     end
   end
