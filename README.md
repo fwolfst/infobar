@@ -10,6 +10,11 @@ Display progress of computations and additional information to the terminal.
 
 ## Usage
 
+### Basic
+
+In its simplest form, `Infobar` just shows `progress` measured in steps, where
+the "result" of each iteration does not matter.
+
     > Infobar(total: 23)
     ░░░░░░░░░░ Infobar 6/23 in 00:00:05, ETA 00:00:17 @17:43:37 –
     > 23.times { +infobar; sleep 1 }
@@ -18,6 +23,39 @@ Display progress of computations and additional information to the terminal.
     or alternatively
 
     > (1..23).with_infobar.each { |i| +infobar; sleep 1 }
+
+### With success/failure count
+
+You can use `+infobar` and `-infobar` to progress, but indicate a
+Success/Failure. Infobar will count these.
+
+```ruby
+(1..23).with_infobar.each do |value|
+  # Expensive computation. For illustration, even numbers succeed, others fail
+  if value.even?
+    +infobar
+  else
+    -infobar
+  end
+end
+
+# Output difficult to reproduce here, will indicate colored bar if possible.
+```
+
+### With arbitrary result count
+
+Infobar can also count arbitrary results.
+
+```ruby
+(1..23).with_infobar.each do |value|
+  # Expensive computation. For illustration, classify by modulo %3
+  result = value % 3
+  infobar.progress(as: result)
+end
+
+puts infobar.counter.as
+# {nil=>0, 1=>8, 2=>8, 0=>7}
+```
 
 ## Changes
 
